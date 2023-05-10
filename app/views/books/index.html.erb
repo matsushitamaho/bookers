@@ -18,9 +18,20 @@
       <td><%=book.description %></td>
       <td><%=link_to 'show','/books/show'%></td>
       <td><%=link_to 'edit','books/edit'%></td>
-      <td><%=link_to 'destroy',destroy_books_path(@book.id),method:delete,=>"本当に削除しますか？"%></td>
+      <td><%=link_to 'destroy'book,method: :delete,date: {confirm:"Are you sure?"},</td>
     </tr>
   </tbody>
 </table>
 
+<% end %>
+
 <h2>New book</h2>
+<%=from_with model:Book.new do |f| %>
+  <h4>Title</h4>
+  <%=f.text_field:title %>
+  
+  <h4>Body</h4>
+  <%=f.text_area:body %>
+  
+  <%=f.submit'Create Book'%>
+<% end %>
